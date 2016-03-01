@@ -3,7 +3,7 @@ import {TodoActionTypes} from '../constants/TodoConstants';
 
 let counter = 0; 
 
-const todo = (state,action) => {
+export const todo = (state,action) => {
     switch(action.type){
         case TodoActionTypes.ADD_TODO:
             return {
@@ -25,5 +25,3 @@ const todo = (state,action) => {
             return state;
     }
 };
-
-export default todo;

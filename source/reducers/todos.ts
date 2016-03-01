@@ -1,7 +1,7 @@
 import {TodoActionTypes} from '../constants/TodoConstants';
-import todo from './todo';
+import {todo} from './todo';
 
-const todos = (state=[],action) => {
+export const todos = (state=[],action) => {
     switch(action.type){
         case TodoActionTypes.ADD_TODO:
             return [...state,todo(null,action)];
@@ -11,5 +11,3 @@ const todos = (state=[],action) => {
             return state;
     }
 };
-
-export default todos;

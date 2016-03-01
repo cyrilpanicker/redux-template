@@ -1,6 +1,6 @@
 import {TodoActionTypes,TodoFilterTypes} from '../constants/TodoConstants';
 
-const filter = (state=TodoFilterTypes.ALL,action) => {
+export const filter = (state=TodoFilterTypes.ALL,action) => {
     switch(action.type){
         case TodoActionTypes.APPLY_FILTER:
             switch(action.filterType){
@@ -13,5 +13,3 @@ const filter = (state=TodoFilterTypes.ALL,action) => {
             return state;
     }
 };
-
-export default filter;

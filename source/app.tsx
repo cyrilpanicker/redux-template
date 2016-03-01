@@ -3,14 +3,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as $ from 'jquery';
-import TodosApp from './components/Todos/TodosApp';
+import {Todo} from './components/Todo';
 
 var _react = React;
 
 $(()=>{
     $(document.body).append('<div id="mount"></div>');
     ReactDOM.render(
-        <TodosApp/>,
+        <Todo/>,
         $('#mount')[0]
     );
 });
