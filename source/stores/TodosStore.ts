@@ -10,4 +10,6 @@ const reducer = combineReducers({
     filter
 });
 
-export const TodoStore = createStore(reducer,{},window.devToolsExtension());
+export const TodoStore = createStore(reducer,{},
+    window.devToolsExtension ? window.devToolsExtension() : undefined
+);

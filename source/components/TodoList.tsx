@@ -35,12 +35,8 @@ export class TodoList extends React.Component<any,any>{
     
     unsubscribe = null;
     
-    state = TodoStore.getState();
-    
     componentDidMount(){
-        this.unsubscribe = TodoStore.subscribe(() => {
-            this.setState(TodoStore.getState());
-        });
+        this.unsubscribe = TodoStore.subscribe(this.forceUpdate.bind(this));
     }
     
     componentWillUnmount(){{
@@ -55,7 +51,7 @@ export class TodoList extends React.Component<any,any>{
     }
     
     getFilteredTodos(){
-        const {todos,filter} = this.state;
+        const {todos,filter} = TodoStore.getState();
         let filteredTodos:any[] = todos;
         if(filter === TodoFilterTypes.COMPLETED){
             filteredTodos = filteredTodos.filter(todo => todo.complete);

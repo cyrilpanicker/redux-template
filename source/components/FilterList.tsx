@@ -27,12 +27,8 @@ export class FilterList extends React.Component<any,any>{
     
     unsubscribe = null;
     
-    state = TodoStore.getState();
-    
     componentDidMount(){
-        this.unsubscribe = TodoStore.subscribe(() => {
-            this.setState(TodoStore.getState());
-        });
+        this.unsubscribe = TodoStore.subscribe(this.forceUpdate.bind(this));
     }
     
     componentWIllUnmount(){
@@ -48,7 +44,7 @@ export class FilterList extends React.Component<any,any>{
     
     
     render(){
-        const {filter} = this.state;
+        const {filter} = TodoStore.getState();
         return (
             <div className="filter-list">
                 <Link text={TodoFilterTypes.ALL} active={filter === TodoFilterTypes.ALL} onClick={this.onFilter.bind(null,TodoFilterTypes.ALL)} />{', '}
