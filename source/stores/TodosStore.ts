@@ -5,7 +5,9 @@ import {combineReducers,createStore} from 'redux';
 import {todos} from '../reducers/todos';
 import {filter} from '../reducers/filter';
 
-export const TodoStore = createStore(combineReducers({
+const reducer = combineReducers({
     todos,
     filter
-}));
+});
+
+export const TodoStore = createStore(reducer,{},window.devToolsExtension());
