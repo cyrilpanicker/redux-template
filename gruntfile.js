@@ -10,7 +10,7 @@ module.exports = function(grunt){
                 target:'es5',
                 sourceMap:false,
                 fast:'never',
-                jsx:'preserve'
+                jsx:'react'
             },
             default:{
                 files:[
@@ -25,7 +25,7 @@ module.exports = function(grunt){
         webpack:{
             default:{
                 // devtool:'source-map',
-                entry:'./build/app.jsx',
+                entry:'./build/app.js',
                 output:{
                     filename:'scripts.js',
                     path:'./public'
@@ -36,21 +36,21 @@ module.exports = function(grunt){
                         filename:'index.html'
                     })
                 ],
-                module:{
-                    loaders:[
-                        {
-                            test: /\.jsx?$/,
-                            include:'./build',
-                            loader: 'babel',
-                            query: {
-                                presets: ['react', 'es2015']
-                            }
-                        }
-                    ]
-                },
-                resolve:{
-                    extensions: ['', '.js', '.jsx']
-                }
+                // module:{
+                //     loaders:[
+                //         {
+                //             test: /\.jsx?$/,
+                //             include:'./build',
+                //             loader: 'babel',
+                //             query: {
+                //                 presets: ['react', 'es2015']
+                //             }
+                //         }
+                //     ]
+                // },
+                // resolve:{
+                //     extensions: ['', '.js', '.jsx']
+                // }
             }
         },
         

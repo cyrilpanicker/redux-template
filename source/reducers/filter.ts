@@ -1,12 +1,15 @@
 import {TodoActionTypes,TodoFilterTypes} from '../constants/TodoConstants';
 
-export const filter = (state=TodoFilterTypes.ALL,action) => {
+const {APPLY_FILTER} = TodoActionTypes;
+const {ALL,COMPLETED,PENDING} = TodoFilterTypes;
+
+export const filter = (state=ALL,action) => {
     switch(action.type){
-        case TodoActionTypes.APPLY_FILTER:
-            switch(action.filterType){
-                case TodoFilterTypes.ALL:return TodoFilterTypes.ALL;
-                case TodoFilterTypes.COMPLETED:return TodoFilterTypes.COMPLETED;
-                case TodoFilterTypes.PENDING:return TodoFilterTypes.PENDING;
+        case APPLY_FILTER:
+            switch(action.filter){
+                case ALL:return ALL;
+                case COMPLETED:return COMPLETED;
+                case PENDING:return PENDING;
                 default:return state;
             }
         default:

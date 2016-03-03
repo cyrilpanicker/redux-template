@@ -1,8 +1,10 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import {TodoStore} from '../stores/TodosStore';
-import {TodoActionTypes,TodoFilterTypes} from '../constants/TodoConstants';
+import {TodoFilterTypes} from '../constants/TodoConstants';
+import {toggleTodoState} from '../actions/TodoStoreActions';
 
 import * as React from 'react';
+const {ALL,COMPLETED,PENDING} = TodoFilterTypes;
 
 
 class ListItem extends React.Component<any,any>{
@@ -46,19 +48,12 @@ export class TodoList extends React.Component<any,any>{
         this.unsubscribe();
     }}
     
-    onTodoCLick(id){
-        TodoStore.dispatch({
-            type:TodoActionTypes.TOGGLE_TODO_STATE,
-            id:id
-        });
-    }
-    
     getFilteredTodos(){
         const {todos,filter} = this.state;
         let filteredTodos:any[] = todos;
-        if(filter === TodoFilterTypes.COMPLETED){
+        if(filter === COMPLETED){
             filteredTodos = filteredTodos.filter(todo => todo.complete);
-        } else if(filter === TodoFilterTypes.PENDING){
+        } else if(filter === PENDING){
             filteredTodos = filteredTodos.filter(todo => !todo.complete);
         }
         return filteredTodos;
@@ -67,7 +62,7 @@ export class TodoList extends React.Component<any,any>{
     render(){
         const todos = this.getFilteredTodos();
         return (
-            <List items={todos} onItemClick={this.onTodoCLick} />
+            <List items={todos} onItemClick={toggleTodoState} />
         );
     }
 

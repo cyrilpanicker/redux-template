@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "jsx":"preserve"
+        "jsx":"react"
     }
 }

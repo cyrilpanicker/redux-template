@@ -1,12 +1,11 @@
-export class TodoActionTypes{
-    static ADD_TODO = 'ADD_TODO';
-    static TOGGLE_TODO_STATE = 'TOGGLE_TODO_STATE';
-    static APPLY_FILTER = 'APPLY_FILTER';
-}
+export const TodoActionTypes = {
+    ADD_TODO:'ADD_TODO',
+    TOGGLE_TODO_STATE:'TOGGLE_TODO_STATE',
+    APPLY_FILTER:'APPLY_FILTER'
+};
 
-
-export class TodoFilterTypes{
-    static ALL = 'ALL';
-    static COMPLETED = 'COMPLETED';
-    static PENDING = 'PENDING';
+export const TodoFilterTypes = {
+    ALL:'ALL',
+    COMPLETED:'COMPLETED',
+    PENDING:'PENDING'
 }

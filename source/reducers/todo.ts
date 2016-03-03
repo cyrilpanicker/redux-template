@@ -1,17 +1,17 @@
 import {assign} from '../utils';
 import {TodoActionTypes} from '../constants/TodoConstants';
 
-let counter = 0; 
+const {ADD_TODO,TOGGLE_TODO_STATE} = TodoActionTypes;
 
 export const todo = (state,action) => {
     switch(action.type){
-        case TodoActionTypes.ADD_TODO:
+        case ADD_TODO:
             return {
-                id:counter++,
+                id:action.id,
                 text:action.text,
                 complete:false
             };
-        case TodoActionTypes.TOGGLE_TODO_STATE:
+        case TOGGLE_TODO_STATE:
             if(state.id !== action.id){
                 return state;
             } else {

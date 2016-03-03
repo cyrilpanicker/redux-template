@@ -1,15 +1,18 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {combineReducers,createStore} from 'redux';
+import {combineReducers,createStore,compose} from 'redux';
 
 import {todos} from '../reducers/todos';
 import {filter} from '../reducers/filter';
+import {DevTools} from '../DevTools';
 
 const reducer = combineReducers({
     todos,
     filter
 });
 
-export const TodoStore = createStore(reducer,{},
-    window.devToolsExtension ? window.devToolsExtension() : undefined
+const enhancer:any = compose(
+    DevTools.instrument()
 );
+
+export const TodoStore = createStore(reducer,{},enhancer);

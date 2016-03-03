@@ -1,5 +1,6 @@
-var assign = function (target,...sources) {
-    
+
+export const assign = function (target,...sources) {
+
     if (target === undefined || target === null) {
         throw new TypeError('Cannot convert undefined or null to object');
     }
@@ -19,5 +20,3 @@ var assign = function (target,...sources) {
     return output;
 
 };
-
-export {assign};

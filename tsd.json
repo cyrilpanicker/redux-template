@@ -5,17 +5,26 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
+    },
     "redux/redux.d.ts": {
-      "commit": "27d7b56688bfeba9c6fc1ce0ecb611d929982d44"
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
     },
     "react/react-dom.d.ts": {
-      "commit": "27d7b56688bfeba9c6fc1ce0ecb611d929982d44"
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
     },
     "react/react.d.ts": {
       "commit": "27d7b56688bfeba9c6fc1ce0ecb611d929982d44"
     },
-    "jquery/jquery.d.ts": {
-      "commit": "27d7b56688bfeba9c6fc1ce0ecb611d929982d44"
+    "redux-devtools/redux-devtools.d.ts": {
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
+    },
+    "redux-devtools-log-monitor/redux-devtools-log-monitor.d.ts": {
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
+    },
+    "redux-devtools-dock-monitor/redux-devtools-dock-monitor.d.ts": {
+      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
     }
   }
 }

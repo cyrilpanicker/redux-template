@@ -1,8 +1,10 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import {TodoStore} from '../stores/TodosStore';
-import {TodoActionTypes,TodoFilterTypes} from '../constants/TodoConstants';
-
+import {TodoFilterTypes} from '../constants/TodoConstants';
+import {applyFilter} from '../actions/TodoStoreActions'
 import * as React from 'react';
+
+const {ALL,COMPLETED,PENDING} = TodoFilterTypes;
 
 class Link extends React.Component<any,any>{
     render(){
@@ -38,21 +40,13 @@ export class FilterList extends React.Component<any,any>{
         this.unsubscribe();
     }
     
-    onFilter(filterType){
-        TodoStore.dispatch({
-            type:TodoActionTypes.APPLY_FILTER,
-            filterType
-        });
-    }
-    
-    
     render(){
         const {filter} = this.state;
         return (
             <div className="filter-list">
-                <Link text={TodoFilterTypes.ALL} active={filter === TodoFilterTypes.ALL} onClick={this.onFilter.bind(null,TodoFilterTypes.ALL)} />{', '}
-                <Link text={TodoFilterTypes.COMPLETED} active={filter === TodoFilterTypes.COMPLETED} onClick={this.onFilter.bind(null,TodoFilterTypes.COMPLETED)} />{', '}
-                <Link text={TodoFilterTypes.PENDING} active={filter === TodoFilterTypes.PENDING} onClick={this.onFilter.bind(null,TodoFilterTypes.PENDING)} />
+                <Link text={ALL} active={filter === ALL} onClick={applyFilter.bind(null,ALL)} />{', '}
+                <Link text={COMPLETED} active={filter === COMPLETED} onClick={applyFilter.bind(null,COMPLETED)} />{', '}
+                <Link text={PENDING} active={filter === PENDING} onClick={applyFilter.bind(null,PENDING)} />
             </div>
         );
     }
