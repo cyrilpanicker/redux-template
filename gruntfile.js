@@ -71,7 +71,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-contrib-connect');
     
-    grunt.registerTask('compile',['ts']);
-    grunt.registerTask('bundle',['webpack']);
+    grunt.registerTask('build',['ts','webpack']);
     grunt.registerTask('serve',['connect']);
 };

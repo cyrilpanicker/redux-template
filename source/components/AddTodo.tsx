@@ -1,9 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import * as React from 'react';
-import {TodoStore} from '../stores/TodoStore';
+import {connect} from 'react-redux';
 import {addTodoAction} from '../actions/TodoStoreActions';
-
-const {dispatch} = TodoStore; 
 
 class InputGroup extends React.Component<any,any>{
     
@@ -28,16 +26,12 @@ class InputGroup extends React.Component<any,any>{
     }
 }
 
-export class AddTodo extends React.Component<any,any>{
-    
-    addTodo(text){
-        dispatch(addTodoAction(text));
-    }
-    
-    render(){
-        return (
-            <InputGroup onAdd={this.addTodo}/>
-        );
-    }
-    
-}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAdd:(text) => {
+            dispatch(addTodoAction(text));
+        }
+    };
+};
+
+export const AddTodo = connect(null,mapDispatchToProps)(InputGroup);

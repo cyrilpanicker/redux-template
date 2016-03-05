@@ -9,7 +9,7 @@
       "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
     },
     "redux/redux.d.ts": {
-      "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
+      "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
     },
     "react/react-dom.d.ts": {
       "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
@@ -25,6 +25,12 @@
     },
     "redux-devtools-dock-monitor/redux-devtools-dock-monitor.d.ts": {
       "commit": "24635d778d7ff1f7665f04239563b2ef2684ee1c"
+    },
+    "react-redux/react-redux.d.ts": {
+      "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
+    },
+    "underscore/underscore.d.ts": {
+      "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
     }
   }
 }

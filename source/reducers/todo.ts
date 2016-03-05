@@ -1,4 +1,5 @@
-import {assign} from '../utils';
+/// <reference path="../../typings/tsd.d.ts" />
+import {assign} from 'underscore';
 import {TodoActionTypes} from '../constants/TodoConstants';
 
 const {ADD_TODO,TOGGLE_TODO_STATE} = TodoActionTypes;

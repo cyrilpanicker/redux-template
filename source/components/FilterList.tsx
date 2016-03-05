@@ -1,11 +1,10 @@
 /// <reference path="../../typings/tsd.d.ts" />
 import * as React from 'react';
-import {TodoStore} from '../stores/TodoStore';
+import {connect} from 'react-redux';
 import {TodoFilterTypes} from '../constants/TodoConstants';
 import {applyFilterAction} from '../actions/TodoStoreActions'
 
 const {ALL,COMPLETED,PENDING} = TodoFilterTypes;
-const {subscribe,getState,dispatch} = TodoStore;
 
 class Link extends React.Component<any,any>{
     render(){
@@ -26,33 +25,32 @@ class Link extends React.Component<any,any>{
     }
 }
 
-export class FilterList extends React.Component<any,any>{
-    
-    unsubscribe = null;
-    state = getState();
-    
-    componentDidMount(){
-        this.unsubscribe = subscribe(() => {
-            this.setState(getState());
-        });
-    }
-    
-    componentWillUnmount(){
-        this.unsubscribe();
-    }
-    
-    applyFilter(filter){
-        dispatch(applyFilterAction(filter));
-    }
+class LinkList extends React.Component<any,any>{
     
     render(){
-        const {filter} = this.state;
+        const {activeFilter,onClick} = this.props;
         return (
-            <div className="filter-list">
-                <Link text={ALL} active={filter === ALL} onClick={this.applyFilter.bind(null,ALL)} />{', '}
-                <Link text={COMPLETED} active={filter === COMPLETED} onClick={this.applyFilter.bind(null,COMPLETED)} />{', '}
-                <Link text={PENDING} active={filter === PENDING} onClick={this.applyFilter.bind(null,PENDING)} />
+            <div className="link-list">
+                <Link text={ALL} active={activeFilter === ALL} onClick={onClick.bind(null,ALL)} />{', '}
+                <Link text={COMPLETED} active={activeFilter === COMPLETED} onClick={onClick.bind(null,COMPLETED)} />{', '}
+                <Link text={PENDING} active={activeFilter === PENDING} onClick={onClick.bind(null,PENDING)} />
             </div>
         );
     }
 }
+
+const mapStateToProps = ({filter}) => {
+    return {
+        activeFilter:filter
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClick:(filter) => {
+            dispatch(applyFilterAction(filter));
+        }
+    };
+};
+
+export const FilterList = connect(mapStateToProps,mapDispatchToProps)(LinkList);

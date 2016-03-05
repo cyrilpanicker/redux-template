@@ -15,5 +15,5 @@ $(()=>{
         <Todo/>,
         $('#mount')[0]
     );
-    showDevTools(TodoStore);
+    //showDevTools(TodoStore);
 });
