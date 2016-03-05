@@ -1,10 +1,11 @@
 /// <reference path="../../typings/tsd.d.ts" />
-import {TodoStore} from '../stores/TodosStore';
-import {TodoFilterTypes} from '../constants/TodoConstants';
-import {applyFilter} from '../actions/TodoStoreActions'
 import * as React from 'react';
+import {TodoStore} from '../stores/TodoStore';
+import {TodoFilterTypes} from '../constants/TodoConstants';
+import {applyFilterAction} from '../actions/TodoStoreActions'
 
 const {ALL,COMPLETED,PENDING} = TodoFilterTypes;
+const {subscribe,getState,dispatch} = TodoStore;
 
 class Link extends React.Component<any,any>{
     render(){
@@ -28,25 +29,29 @@ class Link extends React.Component<any,any>{
 export class FilterList extends React.Component<any,any>{
     
     unsubscribe = null;
-    state = TodoStore.getState();
+    state = getState();
     
     componentDidMount(){
-        this.unsubscribe = TodoStore.subscribe(() => {
-            this.setState(TodoStore.getState());
+        this.unsubscribe = subscribe(() => {
+            this.setState(getState());
         });
     }
     
-    componentWIllUnmount(){
+    componentWillUnmount(){
         this.unsubscribe();
+    }
+    
+    applyFilter(filter){
+        dispatch(applyFilterAction(filter));
     }
     
     render(){
         const {filter} = this.state;
         return (
             <div className="filter-list">
-                <Link text={ALL} active={filter === ALL} onClick={applyFilter.bind(null,ALL)} />{', '}
-                <Link text={COMPLETED} active={filter === COMPLETED} onClick={applyFilter.bind(null,COMPLETED)} />{', '}
-                <Link text={PENDING} active={filter === PENDING} onClick={applyFilter.bind(null,PENDING)} />
+                <Link text={ALL} active={filter === ALL} onClick={this.applyFilter.bind(null,ALL)} />{', '}
+                <Link text={COMPLETED} active={filter === COMPLETED} onClick={this.applyFilter.bind(null,COMPLETED)} />{', '}
+                <Link text={PENDING} active={filter === PENDING} onClick={this.applyFilter.bind(null,PENDING)} />
             </div>
         );
     }

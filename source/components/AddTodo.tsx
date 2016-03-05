@@ -1,9 +1,9 @@
 /// <reference path="../../typings/tsd.d.ts" />
-import {TodoStore} from '../stores/TodosStore';
-import {addTodo} from '../actions/TodoStoreActions';
-
 import * as React from 'react';
+import {TodoStore} from '../stores/TodoStore';
+import {addTodoAction} from '../actions/TodoStoreActions';
 
+const {dispatch} = TodoStore; 
 
 class InputGroup extends React.Component<any,any>{
     
@@ -30,9 +30,13 @@ class InputGroup extends React.Component<any,any>{
 
 export class AddTodo extends React.Component<any,any>{
     
+    addTodo(text){
+        dispatch(addTodoAction(text));
+    }
+    
     render(){
         return (
-            <InputGroup onAdd={addTodo}/>
+            <InputGroup onAdd={this.addTodo}/>
         );
     }
     
